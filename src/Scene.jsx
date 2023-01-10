@@ -8,11 +8,14 @@ import { Car } from "./Car";
 import { Ground } from "./Ground";
 import { Track } from "./Track";
 
+
+
+
 export function Scene() {
   const [thirdPerson, setThirdPerson] = useState(false);
   const [firstPerson, setFirstPerson] = useState(true);
   const [cameraPosition, setCameraPosition] = useState([-6, 3.9, 6.21]);
-  const [ cameraFov, setCameraFov ] = useState(20);
+  const [ cameraFov, setCameraFov ] = useState(26.5);
 
 
 
@@ -43,7 +46,7 @@ export function Scene() {
       setFirstPerson(true);
       setThirdPerson(false);
       setCameraPosition([-6, 3.9, 6.21 + Math.random() * 0.01]);
-      setCameraFov(27);
+      setCameraFov(26.5);
       
     }
   });

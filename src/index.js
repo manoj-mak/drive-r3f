@@ -25,21 +25,32 @@ createRoot(document.getElementById("root")).render(
     
 
     <div class="controls">
-      <p>press w a s d to move</p>
       
-      <p>press r to reset</p>
-      <button id="Up">up</button>
-      <button id="Down">down</button>
-      <button id="Left">left</button>
-      <button id="Right">right</button>
+      <button >
+        <img id="Up" className="c-img" src="./up.png" alt="up"/>
+      </button>
+      <button >
+        <img id="Down" className="c-img" src="./down.png" alt="down"/>
+      </button>
+      <button >
+        <img id="Left" className="c-img" src="./left.png" alt="left"/>
+      </button>
+      <button >
+        <img id="Right" className="c-img" src="./right.png" alt="right"/>
+      </button>
+      
       
       
       
     </div>
 
     <div class="tools">
-      <button id="reset">reset</button>
-      <button id="cam">camera</button>
+    <button >
+        <img id="reset" className="c-img" src="./reset.png" alt="right"/>
+      </button>
+    <button >
+        <img id="cam" className="c-img" src="./cam.png" alt="right"/>
+    </button>
     </div>
   </>
 );

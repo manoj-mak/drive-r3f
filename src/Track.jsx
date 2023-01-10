@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { ColliderBox } from "./ColliderBox";
-import { Ramp } from "./Ramp";
+
 
 export function Track() {
   const result = useLoader(
