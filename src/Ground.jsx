@@ -58,7 +58,7 @@ export function Ground() {
         <planeGeometry args={[12, 12]} />
         <meshBasicMaterial
           opacity={0.325}
-          alphaMap={gridMap}
+          //alphaMap={gridMap}
           transparent={true}
           color={"white"}
         />
@@ -72,9 +72,10 @@ export function Ground() {
       >
         <circleGeometry args={[6.12, 50]} />
         <MeshReflectorMaterial
-          aoMap={aoMap}
+          //aoMap={aoMap}
+          aoMap={gridMap}
           alphaMap={alphaMap}
-          transparent={true}
+          transparent={false}
           color={[0.5, 0.5, 0.5]}
           envMapIntensity={0.35}
           metalness={0.05}

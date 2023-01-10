@@ -74,7 +74,7 @@ export function Car({ thirdPerson,firstPerson }) {
     let quaternion = new Quaternion(0, 0, 0, 0);
     quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
     
-    let wDir = new Vector3(0.0020,0.0009,0.01);
+    let wDir = new Vector3(0.0028,0.0018,0.01);
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
     
@@ -99,7 +99,7 @@ export function Car({ thirdPerson,firstPerson }) {
     let mesh = result;
     mesh.scale.set(0.0012, 0.0012, 0.0012);
 
-    mesh.children[0].position.set(-365, -18, -67);
+    mesh.children[0].position.set(-365, -5, -67);
   }, [result]);
 
   return (

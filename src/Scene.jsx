@@ -7,6 +7,8 @@ import { Suspense, useEffect, useState } from "react";
 import { Car } from "./Car";
 import { Ground } from "./Ground";
 import { Track } from "./Track";
+import { Road } from "./Road";
+import { ColliderBox } from "./ColliderBox";
 
 
 
@@ -35,7 +37,7 @@ export function Scene() {
       setFirstPerson(false);
       setThirdPerson(false);
       setCameraPosition([-6, 3.9, 6.21 + Math.random() * 0.01]);
-      setCameraFov(33);
+      setCameraFov(38);
     } else if (firstPerson) {
       setFirstPerson(false);
       setThirdPerson(true);
@@ -75,7 +77,11 @@ export function Scene() {
 
 
       <Ground />
-      <Track />
+      <Road />
+      <ColliderBox position={[-1.92, 0, -2.2]} scale={[0.1, 1, 15.8]}/>
+      <ColliderBox position={[-1.165, 0, -2.2]} scale={[0.1, 1, 15.8]}/>
+      
+      
       <Car thirdPerson={thirdPerson} firstPerson={firstPerson} />
     </Suspense>
   );
