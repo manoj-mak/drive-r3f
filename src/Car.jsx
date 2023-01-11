@@ -7,12 +7,13 @@ import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
 
+
 export function Car({ thirdPerson,firstPerson }) {
   // thanks to the_86_guy!
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
     GLTFLoader,
-    process.env.PUBLIC_URL + "/models/car2.glb"
+    process.env.PUBLIC_URL + "/models/car3.glb"
   ).scene;
 
   const position = [-1.5, 0.5, 3];
@@ -73,12 +74,15 @@ export function Car({ thirdPerson,firstPerson }) {
   
     let quaternion = new Quaternion(0, 0, 0, 0);
     quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
-    
-    let wDir = new Vector3(0.0028,0.0018,0.01);
+    //for car2
+    //let wDir = new Vector3(0.0028,0.0018,0.01);
+
+    //for car3
+    let wDir = new Vector3(0.0017,0.0021,0.01);
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
     
-    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(0.15));
+    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(0.13));
     state.camera.position.copy(cameraPosition);
     state.camera.quaternion.copy(quaternion);
     
@@ -113,6 +117,7 @@ export function Car({ thirdPerson,firstPerson }) {
         <boxGeometry args={chassisBodyArgs} />
       </mesh> */}
 
+     
       <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
       <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
       <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} />

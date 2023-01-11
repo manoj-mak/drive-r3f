@@ -75,9 +75,9 @@ export function Ground() {
           //aoMap={aoMap}
           aoMap={gridMap}
           alphaMap={alphaMap}
-          transparent={false}
+          transparent={true}
           color={[0.5, 0.5, 0.5]}
-          envMapIntensity={0.35}
+          envMapIntensity={0.55}
           metalness={0.05}
           roughness={0.4}
 
