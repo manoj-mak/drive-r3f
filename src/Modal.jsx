@@ -1,6 +1,6 @@
 import React from "react";
-import cross from "./cross.png";
 import cam from "./cam.png";
+import notch from "./notch.PNG";
 
 
 
@@ -25,7 +25,7 @@ const Modal = ({ isOpen, closeModal }) => {
                 
                 
                 <div className="modal-content">
-                <img src={cam} alt="front-cam" className="front-cam" />
+                <img src={notch} alt="front-cam" className="front-cam" />
                   
         </div>
                 

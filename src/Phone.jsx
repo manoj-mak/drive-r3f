@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import Modal from './Modal';
-import cross from "./cross.png";
-import cam from "./cam.png";
+
+
 
 function Phone() {
     const [isOpen, setIsOpen] = useState(false);

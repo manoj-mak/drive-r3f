@@ -3,13 +3,13 @@ import {
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei";
-import { Suspense, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Car } from "./Car";
 import { Ground } from "./Ground";
-import { Track } from "./Track";
 import { Road } from "./Road";
 import { ColliderBox } from "./ColliderBox";
 import { CrashPoint } from "./CrashPoint";
+
 
 
 
@@ -23,7 +23,7 @@ export function Scene() {
 
 
   
-
+  
   
 
 
@@ -62,7 +62,7 @@ export function Scene() {
  
 
   return (
-    <Suspense fallback={null}>
+    <>
       <Environment
         files={process.env.PUBLIC_URL + "/textures/envmap.hdr"}
         background={"both"}
@@ -86,6 +86,6 @@ export function Scene() {
       
       
       <Car thirdPerson={thirdPerson} firstPerson={firstPerson} />
-    </Suspense>
+      </>
   );
 }
