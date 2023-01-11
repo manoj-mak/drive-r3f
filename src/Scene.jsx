@@ -9,6 +9,7 @@ import { Ground } from "./Ground";
 import { Track } from "./Track";
 import { Road } from "./Road";
 import { ColliderBox } from "./ColliderBox";
+import { CrashPoint } from "./CrashPoint";
 
 
 
@@ -80,6 +81,8 @@ export function Scene() {
       <Road />
       <ColliderBox position={[-1.92, 0, -2.2]} scale={[0.1, 1, 15.8]}/>
       <ColliderBox position={[-1.165, 0, -2.2]} scale={[0.1, 1, 15.8]}/>
+      <ColliderBox position={[-1.54,0,5.5]} scale={[0.65, 1, 0.4]}/>
+      <CrashPoint position={[-1.54,0,-9.5]} scale={[0.65, 1, 0.4]}/>
       
       
       <Car thirdPerson={thirdPerson} firstPerson={firstPerson} />
