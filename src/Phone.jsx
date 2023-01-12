@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import { useEffect } from 'react';
 import Modal from './Modal';
 
 
@@ -13,6 +14,12 @@ function Phone() {
     const closeModal = () => {
         setIsOpen(false);
     }
+
+    useEffect (() => {
+        setTimeout(() => {
+            setIsOpen(true);
+        }, 5000);
+    }, []);
 
     
 

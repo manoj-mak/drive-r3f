@@ -18,7 +18,7 @@ export function CrashPoint({ position, scale }) {
     debug && (
       <mesh position={position}>
         <boxGeometry args={scale} />
-        <meshBasicMaterial transparent={true} opacity={0.75} />
+        <meshBasicMaterial transparent={true} opacity={0.95} />
       </mesh>
     )
   );
