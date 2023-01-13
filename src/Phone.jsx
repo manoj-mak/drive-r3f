@@ -18,7 +18,7 @@ function Phone() {
     useEffect (() => {
         setTimeout(() => {
             setIsOpen(true);
-        }, 5000);
+        }, 6000);
     }, []);
 
     

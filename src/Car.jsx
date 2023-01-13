@@ -117,7 +117,7 @@ export function Car({ thirdPerson,firstPerson }) {
         <boxGeometry args={chassisBodyArgs} />
       </mesh> */}
 
-      <pointLight position={[-1.5, 0.5, 3]} />
+<pointLight position={[-1.5, 0.5, 3]} />
       <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
       <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
       <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} />

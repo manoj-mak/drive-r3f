@@ -57,7 +57,7 @@ export function Ground() {
       >
         <planeGeometry args={[12, 12]} />
         <meshBasicMaterial
-          opacity={0.325}
+          opacity={0}
           //alphaMap={gridMap}
           transparent={true}
           color={"white"}
@@ -66,7 +66,7 @@ export function Ground() {
 
       <mesh
         ref={meshRef}
-        position={[-2.285, -0.015, -1.325]}
+        position={[-2.285, -0.515, -1.325]}
         rotation-x={-Math.PI * 0.5}
         rotation-z={-0.079}
       >

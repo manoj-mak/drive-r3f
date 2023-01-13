@@ -48,7 +48,7 @@ function App() {
           <div className="rotate">
                  <Lottie loop={true} animationData={Rotate} />
             </div>
-          <button className="start-btn" onClick={() =>{
+          <button className="start" onClick={() =>{
             setStarted(false);
             setLoading(true);
           } }>Start</button>
@@ -72,7 +72,7 @@ function App() {
 
         setTimeout(() => {
             setLoading(false);
-        }, 4000);
+        }, 5000);
         
     }, [Started,Loading]);
    

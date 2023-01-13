@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+
+.App {
+    text-align: center;
+    display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Nunito', sans-serif;
+  }
+
+  
+  .question-card {
+    /* Center the div  */
+    margin: 0 auto;
+  
+    /* Dimensions  */
+    width: 75%; /* Can be in percentage also. */
+    height: 40%;
+  
+    /* Visual  */
+    background-color: rgb(230, 175, 171);
+    padding: 16px;
+    border-radius: 16px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+
+   
+  }
+  
+  li {
+    margin-top: 4px;
+    background-color: rgb(214, 73, 73);
+    padding: 10px;
+    border: 3px solid white;
+    border-radius: 20px;
+    font-size: 10px;
+    
+  }
+  
+  .question-text {
+    color: rgb(20, 20, 20);
+    font-size: 14px;
+    margin: 3px;
+  }
+  
+  /* Final Results  */
+  
+  .final-results {
+    /* Center the div  */
+    margin: 0 auto;
+  
+    /* Dimensions  */
+    width: 60%; /* Can be in percentage also. */
+    height: auto;
+    margin-top: 64px;
+  
+    /* Visual  */
+    background-color: rgb(207, 119, 119);
+    padding: 16px;
+    border-radius: 16px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  }
+
+#score{
+    margin: 0 0 5px 0;
+    color: rgb(216, 19, 19);
+}
+
+#title{
+    margin-bottom: 5px;
+    color: rgb(216, 19, 19);
+}
+
+#question{
+    margin: 5px;
+}
+
+@media only screen and (max-height: 500px) {
+    .App {
+        text-align: center;
+        display: flex;
+      justify-content: center;
+      flex-direction: column;
+      }
+    
+      
+      .question-card {
+        /* Center the div  */
+        margin: 0 auto;
+      
+        /* Dimensions  */
+        width: 75%; /* Can be in percentage also. */
+        height: 40%;
+      
+        /* Visual  */
+        background-color: rgb(230, 175, 171);
+        padding: 10px;
+        border-radius: 16px;
+        color: white;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+      }
+      
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 2px;
+        margin-top: 2px;
+    
+       
+      }
+      
+      li {
+        margin-top: 4px;
+        background-color: rgb(214, 73, 73);
+        padding: 5px;
+        border: 2px solid white;
+        border-radius: 20px;
+        font-size: 8px;
+        
+      }
+      
+      .question-text {
+        color: rgb(20, 20, 20);
+        font-size: 8px;
+        margin: 2px;
+      }
+      
+      /* Final Results  */
+      
+      .final-results {
+        /* Center the div  */
+        margin: 0 auto;
+        font-size: 8px;
+      
+        /* Dimensions  */
+        width: 80%; /* Can be in percentage also. */
+        height: 40%;
+        margin-top: 5px;
+      
+        /* Visual  */
+        background-color: gray;
+        padding: 4px;
+        border-radius: 16px;
+        color: white;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+      }
+    
+    #score{
+        margin: 0 0 5px 0;
+        color: rgb(216, 19, 19);
+        font-size: 10px;
+    }
+    
+    #title{
+        margin-bottom: 2px;
+        margin-top: 12px;
+        color: rgb(216, 19, 19);
+        font-size: 10px;
+    }
+    
+    #question{
+        margin: 2px;
+    }
+
+}
+ 
+  
+  

@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+
 body, html, #root {
   margin: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
   background-color: #050505;
+  
+  font-family: 'Righteous', cursive;
+  
 }
 
 @media screen and (max-width: 480px) {
@@ -22,7 +28,7 @@ body, html, #root {
     flex-direction: column;
     background-color: #050505;
     color: #fff;
-    font-family: monospace;
+    font-family: 'Fredoka One', cursive;
     font-size: 12px;
     letter-spacing: 0.75px;
     text-align: center;
@@ -69,8 +75,8 @@ body, html, #root {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  background: black;
-  opacity: 0.7;
+  background: none;
+  opacity: 0.9;
   color: white;
   padding: 5px;
   
@@ -80,7 +86,7 @@ body, html, #root {
   position: absolute;
   top: 0px;
   right: 0px;
-  background: black;
+  background: none;
   opacity: 1;
   color: white;
   padding: 5px;
@@ -100,8 +106,8 @@ p {
   left: 0;
   background-color: #171718;
   border-radius: 20px;
-  width: 240px;
-  height: 450px;
+  width: 220px;
+  height: 400px;
   Display: flex;
   justify-content: center;
   align-items: center;
@@ -148,7 +154,7 @@ p {
 
 .front-cam {
   position: absolute;
-  top: 10px;
+  top: 8px;
   left:35%;
 
   
@@ -177,7 +183,7 @@ p {
   position: absolute;
   bottom: 0px;
   left: 0px;
-  background: black;
+  background: none;
   opacity: 1;
   color: white;
   padding: 5px;
@@ -305,9 +311,9 @@ button {
   flex-direction: column;
   background-color: #050505;
   color: #fff;
-  font-family: monospace;
-  font-size: 12px;
-  letter-spacing: 0.75px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  letter-spacing: 0.1px;
   text-align: center;
   padding: 0 20px;
   height: 100%;
@@ -325,12 +331,31 @@ button {
   margin-left: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: monospace;
+  font-family: 'Fredoka One', cursive;
   font-size: 12px;
   letter-spacing: 0.75px;
   text-align: center;
   color: #fff;
   cursor: pointer;
+}
+
+.start{
+  
+    background: rgb(173, 25, 25);
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    letter-spacing: 0.75px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+  
 }
 
 
