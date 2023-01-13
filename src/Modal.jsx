@@ -112,7 +112,7 @@ const Modal = ({ isOpen, closeModal }) => {
                   {score} out of {questions.length} correct 
                   
                 </h4>
-                <button onClick={restartGame}>Restart</button>
+                <button id="answers" onClick={restartGame}>Restart</button>
               </div>
             ) : (
               /* 5. Question Card  */
@@ -122,12 +122,19 @@ const Modal = ({ isOpen, closeModal }) => {
                 <h5 className="question-text">{questions[currentQuestion].text}</h5>
       
                 {/* List of possible answers  */}
-                <ul>
+                <ul id="answers">
                   {questions[currentQuestion].options.map((option) => {
                     return (
                       <li
                         key={option.id}
-                        onClick={() => optionClicked(option.isCorrect)}
+                        //assign id as question number
+                        
+                        onClick={() => {
+                            optionClicked(option.isCorrect)
+                            //console.log(currentQuestion)
+                            //save the question number in local storage
+                            localStorage.setItem("question", currentQuestion);
+                        }}
                       >
                         {option.text}
                       </li>

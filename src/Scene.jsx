@@ -21,7 +21,14 @@ export function Scene() {
   const [ cameraFov, setCameraFov ] = useState(26.5);
 
 
+  
 
+
+  
+    
+   
+    
+  
   
   
   
@@ -49,7 +56,7 @@ export function Scene() {
       setFirstPerson(true);
       setThirdPerson(false);
       setCameraPosition([-6, 3.9, 6.21 + Math.random() * 0.01]);
-      setCameraFov(23.0);
+      setCameraFov(22.0);
       
     }
   });
@@ -79,12 +86,12 @@ export function Scene() {
       <ambientLight intensity={0.2} />
       <Ground />
       <Road />
-      <ColliderBox position={[-1.92, 0, -3.8]} scale={[0.1, 1, 15.8]}/>
-      <ColliderBox position={[-1.165, 0, -3.8]} scale={[0.1, 1, 15.8]}/>
+      <ColliderBox position={[-2.08, 0, -3.8]} scale={[0.1, 1, 22.5]}/>
+      <ColliderBox position={[-0.95, 0, -3.8]} scale={[0.1, 1, 22.5]}/>
       <ColliderBox position={[-1.54,0,3.9]} scale={[0.65, 1, 0.4]}/>
-      <CrashPoint position={[-1.54,0,-22.9]} scale={[0.65, 1, 0.4]}/>
-      <ColliderBox position={[-1.92, 0, -19.8]} scale={[0.1, 1, 15.8]}/>
-      <ColliderBox position={[-1.165, 0, -19.8]} scale={[0.1, 1, 15.8]}/>
+      {/*<CrashPoint position={[-1.54,0,-22.9]} scale={[0.65, 1, 0.4]}/>*/}
+      <ColliderBox position={[-2.08, 0, -19.2]} scale={[0.1, 1, 5.8]}/>
+      <ColliderBox position={[-0.95, 0, -19.2]} scale={[0.1, 1, 5.8]}/>
       
       <Car thirdPerson={thirdPerson} firstPerson={firstPerson} />
       </>

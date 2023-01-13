@@ -82,7 +82,7 @@ export function Car({ thirdPerson,firstPerson }) {
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
     
-    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(0.13));
+    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(0.12));
     state.camera.position.copy(cameraPosition);
     state.camera.quaternion.copy(quaternion);
     
