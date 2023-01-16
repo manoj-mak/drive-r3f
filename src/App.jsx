@@ -123,6 +123,12 @@ function App() {
     
    
   }, []);
+
+
+//disable context menu
+  useEffect(() => {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  }, []);
     
 
 
