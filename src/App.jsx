@@ -140,7 +140,7 @@ function App() {
       if (localStorage.getItem('question') == 2) {
         //simulate crash
         console.log("crash");
-        localStorage.removeItem('question');
+        //localStorage.removeItem('question');
         clearInterval(interval);
         setCrashed(true);
         openModal();
@@ -222,6 +222,7 @@ function App() {
       setTimeout(() => {
         setMessage(true);
         setPrize(false);
+        localStorage.removeItem('question');
       }, 5000);
     }
   }, [Prize]);
