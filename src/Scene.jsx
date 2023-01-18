@@ -2,6 +2,7 @@ import {
   Environment,
   OrbitControls,
   PerspectiveCamera,
+  Stars,
 } from "@react-three/drei";
 import {  useEffect, useState } from "react";
 import { Car } from "./Car";
@@ -62,6 +63,14 @@ export function Scene() {
   });
   
   }, [thirdPerson, firstPerson]);
+
+
+  
+ 
+
+  
+
+
     
 
   
@@ -79,6 +88,8 @@ export function Scene() {
       {!thirdPerson && (
         <OrbitControls target={[-2.64, -0.71, 0.03]} />
       )}
+      <Stars />
+      
 
       
      
@@ -86,13 +97,14 @@ export function Scene() {
       <ambientLight intensity={0.2} />
       <Ground />
       <Road />
-      <ColliderBox position={[-2.08, 0, -3.8]} scale={[0.1, 1, 22.5]}/>
-      <ColliderBox position={[-0.95, 0, -3.8]} scale={[0.1, 1, 22.5]}/>
+      <ColliderBox position={[-2.08, 0, -3.8]} scale={[0.1, 1, 24.5]}/>
+      <ColliderBox position={[-0.95, 0, -3.8]} scale={[0.1, 1, 24.5]}/>
       <ColliderBox position={[-1.54,0,3.9]} scale={[0.65, 1, 0.4]}/>
-      {/*<CrashPoint position={[-1.54,0,-22.9]} scale={[0.65, 1, 0.4]}/>*/}
+      <CrashPoint position={[-1.54,0,-22.9]} scale={[0.65, 1, 0.4]}/>
+     
       <ColliderBox position={[-2.08, 0, -19.2]} scale={[0.1, 1, 5.8]}/>
       <ColliderBox position={[-0.95, 0, -19.2]} scale={[0.1, 1, 5.8]}/>
-      
+     
       <Car thirdPerson={thirdPerson} firstPerson={firstPerson} />
       </>
   );

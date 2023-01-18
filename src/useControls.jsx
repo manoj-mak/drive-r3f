@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 export const useControls = (vehicleApi, chassisApi) => {
   let [controls, setControls] = useState({ });
   let [direction, setDirection] = useState('');
-
   const reset = document.getElementById('reset');
+  var n=0;
   reset.addEventListener('click', function() {
       chassisApi.position.set(-1.5, 0.5, 3);
       chassisApi.velocity.set(0, 0, 0);
@@ -13,6 +13,7 @@ export const useControls = (vehicleApi, chassisApi) => {
   });
 
   useEffect(() => {
+    
     const keyDownPressHandler = (e) => {
       setControls((controls) => ({ ...controls, [e.key.toLowerCase()]: true }));
     }
@@ -25,6 +26,7 @@ export const useControls = (vehicleApi, chassisApi) => {
     const Down = document.getElementById('Down');
     const Left = document.getElementById('Left');
     const Right = document.getElementById('Right');
+    
 
     const keyDownPressHandler2 = (e) => {
       if (e.target === Up) {
@@ -45,6 +47,104 @@ export const useControls = (vehicleApi, chassisApi) => {
         console.log('right');
       }
     }
+
+    document.getElementById("steer").onmouseenter = function() {mouseEnter()};
+    document.getElementById("steer").onmouseleave = function() {mouseLeave()};
+  
+    function mouseEnter() {
+      console.log('mouse enter');
+      
+      
+      //move car up
+      
+      vehicleApi.applyEngineForce(10, 2);
+      vehicleApi.applyEngineForce(10, 3);
+
+      if(n>0){
+      vehicleApi.setSteeringValue(-0.001, 2);
+      vehicleApi.setSteeringValue(-0.001, 3);
+      vehicleApi.setSteeringValue(0.001, 0);
+      vehicleApi.setSteeringValue(0.001, 1);
+    }
+      
+      n = n + 1;
+      //console.log(n);
+
+      
+      
+
+      
+      
+
+      
+    }
+
+    function mouseLeave() {
+      console.log('mouse leave');
+      //tilt car slightly only for a second
+
+     
+
+      setTimeout(() => {
+        vehicleApi.setSteeringValue(0.001, 2);
+        vehicleApi.setSteeringValue(0.001, 3);
+        vehicleApi.setSteeringValue(-0.001, 0);
+        vehicleApi.setSteeringValue(-0.001, 1);
+      }, 500);
+
+    
+    }
+
+
+    
+
+      //keep checking for no of questions in local storage
+      const interval1 = () => {
+       var inter = setInterval(() => {
+          //console.log(localStorage.getItem('question'));
+          if (localStorage.getItem('question') > 1) {
+            //simulate crash
+            console.log("crashy");
+            vehicleApi.setSteeringValue(0.18, 2);
+            vehicleApi.setSteeringValue(0.18, 3);
+            vehicleApi.setSteeringValue(-0.1, 0);
+            vehicleApi.setSteeringValue(-0.1, 1);
+            setTimeout(() => {
+              //stop the car
+              console.log("stop");
+              vehicleApi.applyEngineForce(0, 2);
+              vehicleApi.applyEngineForce(0, 3);
+              vehicleApi.applyEngineForce(0, 0);
+              vehicleApi.applyEngineForce(0, 1);
+              chassisApi.velocity.set(0, 0, 0);
+              clearInterval(inter);
+              inter=undefined;
+              
+    
+            }, 1500);
+           
+            
+            
+            
+            
+    
+          }
+          
+        }
+        , 500);
+      };
+
+      interval1();
+      
+  
+      
+    
+      
+     
+    
+
+
+    
 
     
 

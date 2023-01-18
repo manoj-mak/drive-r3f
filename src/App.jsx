@@ -1,16 +1,21 @@
 import "./index.css";
-import React,{useState,useEffect,Suspense} from 'react';
+import React,{useState,useEffect,Suspense,useRef} from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 //import { createRoot } from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
+import { CameraShake } from "@react-three/drei"
 import { Scene } from "./Scene";
 import { Physics } from "@react-three/cannon";
 import  Phone  from "./Phone";
 import Lottie from "lottie-react";
-import LoadingCar from "./loading.json";
-import Rotate from "./rotate.json"
-import Crash from "./crashed.json"
+import LoadingCar from "./assets/loading.json";
+import Rotate from "./assets/rotate.json"
+import Crash from "./assets/crashed.json"
+import FullPageImage from "./FullPageImage";
+import EndMessage from "./EndMessage" 
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 
 
 const customStyles = {
@@ -41,7 +46,11 @@ function App() {
 
     const [Loading, setLoading] = useState(true);
     const [Started,setStarted ] = useState(true);
+    const [instruct,setInstruct] = useState(false);
     const [Crashed, setCrashed] = useState(false);
+    const [Shake, setShake] = useState(false);
+    const [Prize, setPrize] = useState(false);
+    const [Message, setMessage] = useState(false);
     let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -75,33 +84,60 @@ function App() {
 
 
     const LandingScreen = () => {
-      return (
-        <div className="landing">
-          <h1>Invincible Driver</h1>
-          <h2>Controls</h2>
-          <h3>w/up, s/down, a/left, d/right</h3>
-          
-          <div className="rotate">
-                 <Lottie loop={true} animationData={Rotate} />
+      if(Started==true && instruct==false){
+        return (
+          <div className="landing">
+            
+            
+            <div className="rotate">
+                   <Lottie loop={true} animationData={Rotate} />
+              </div>
+            <button className="start" onClick={() =>{
+              //setStarted(false);
+              setInstruct(true);
+              
+            } }>
+              <img style={{borderRadius:'45px'}} src="./bg-button1.jpg" alt="start"/>
+            </button>
+          </div>
+        )
+      } else if(Started==true && instruct==true){
+        return (
+          <div className="ins">
+            
+            <div>
+            <img src="./ins.png" alt="start"/>
             </div>
-          <button className="start" onClick={() =>{
-            setStarted(false);
-            setLoading(true);
-          } }>Start</button>
-        </div>
-      )
+            
+            
+           
+          </div>
+        )
+      }
+      
     };
+
+    useEffect(() => {
+      if(instruct==true){
+        setTimeout(() => {
+          setStarted(false);
+          setLoading(true);
+        }, 5000);
+      }
+    }, [instruct]);
+
+    
 
    
    
     
-     
+  //checking for crash   
   useEffect (() => { 
 
     //keep checking for no of questions in local storage
     const interval = setInterval(() => {
       //console.log(localStorage.getItem('question'));
-      if (localStorage.getItem('question') == 3) {
+      if (localStorage.getItem('question') == 2) {
         //simulate crash
         console.log("crash");
         localStorage.removeItem('question');
@@ -115,7 +151,7 @@ function App() {
         localStorage.removeItem('question');
       }
     }
-    , 2000);
+    , 500);
     return () => clearInterval(interval);
 
     
@@ -123,6 +159,14 @@ function App() {
     
    
   }, []);
+
+
+  //disable context menu
+  useEffect(() => {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  }, []);
+   
+    
     
 
 
@@ -138,6 +182,63 @@ function App() {
         }, 5000);
         
     }, [Started,Loading]);
+
+
+    
+    
+   //camera shake config
+   const config = {
+    maxYaw: 0.1, // Max amount camera can yaw in either direction
+    maxPitch: 0.01, // Max amount camera can pitch in either direction
+    maxRoll: 0.2, // Max amount camera can roll in either direction
+    yawFrequency: 0.2, // Frequency of the the yaw rotation
+    pitchFrequency: 0.1, // Frequency of the pitch rotation
+    rollFrequency: 0.1, // Frequency of the roll rotation
+    intensity: 0.5, // initial intensity of the shake
+    decay: true, // should the intensity decay over time
+    decayRate: 0.85, // if decay = true this is the rate at which intensity will reduce at
+    controls: undefined, // if using orbit controls, pass a ref here so we can update the rotation
+  }
+
+  useEffect(() => {
+    if(Crashed==true){
+      setTimeout(() => {
+        setShake(true);
+      }, 1000);
+    }
+  }, [Crashed,]);
+
+
+  useEffect(() => {
+    if(Shake==true){
+      setTimeout(() => {
+        setPrize(true);
+      }, 3000);
+    }
+  }, [Shake]);
+
+  useEffect(() => {
+    if(Prize==true){
+      setTimeout(() => {
+        setMessage(true);
+        setPrize(false);
+      }, 5000);
+    }
+  }, [Prize]);
+
+  
+
+
+
+    
+    
+   
+
+
+
+    
+
+
    
 
 
@@ -154,7 +255,7 @@ function App() {
         <LoadingScreen />
         
         
-         <Canvas>
+         <Canvas id="cv" >
          <Physics
            broadphase="SAP"
            gravity={[0, -2.6, 0]}
@@ -163,6 +264,9 @@ function App() {
            <Scene />
            </Suspense>
          </Physics>
+         {!Shake ? null : (<CameraShake intensity={0.6} />)}
+         
+          
        </Canvas>
        
        
@@ -170,8 +274,33 @@ function App() {
     
         {Crashed ? null : (<Phone />)}
         
+        <TransitionGroup>
+       {Prize ? (
+       <CSSTransition
+        key="prize"
+        timeout={300}
+        classNames="prize"
+        >
+        <FullPageImage />
+        </CSSTransition>
+        ) : null}
+      </TransitionGroup>
+
+        
+        <TransitionGroup>
+       {Message ? (
+       <CSSTransition
+        key="message"
+        timeout={300}
+        classNames="message"
+        >
+        <EndMessage />
+        </CSSTransition>
+        ) : null}
+      </TransitionGroup>
+        
     
-        <div class="controls">
+        <div className="controls">
           
           <button >
             <img id="Up" className="c-img" src="./up.png" alt="up"/>
@@ -191,7 +320,7 @@ function App() {
           
         </div>
     
-        <div class="tools">
+        <div className="tools">
         <button >
             <img id="reset" className="c-img" src="./reset.png" alt="right"/>
           </button>
@@ -199,26 +328,17 @@ function App() {
             <img id="cam" className="c-img" src="./cam.png" alt="right"/>
         </button>
         </div>
+
+        <div id="steer" className="steering">
+        
+        </div>
          </>)
       
       
       
       }
 
-        <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        shouldCloseOnOverlayClick={false}
-        contentLabel=" Modal"
-        >
         
-        
-                 <Lottie loop={true} animationData={Crash} />
-            
-        <h2>You Crashed!</h2>
-      </Modal>
        
                 
                 

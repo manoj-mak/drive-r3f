@@ -6,6 +6,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
+import { CameraShake } from "@react-three/drei";
 
 
 export function Car({ thirdPerson,firstPerson }) {
@@ -43,6 +44,11 @@ export function Car({ thirdPerson,firstPerson }) {
     }),
     useRef(null),
   );
+
+  //start moving the car
+  //vehicleApi.applyEngineForce(10, 2);
+  //vehicleApi.applyEngineForce(10, 3);
+
 
   useControls(vehicleApi, chassisApi);
 
@@ -85,8 +91,15 @@ export function Car({ thirdPerson,firstPerson }) {
     let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(0.12));
     state.camera.position.copy(cameraPosition);
     state.camera.quaternion.copy(quaternion);
+
+   
+
+    
+
     
   });
+
+  
 
 
 
@@ -116,12 +129,13 @@ export function Car({ thirdPerson,firstPerson }) {
         <meshBasicMaterial transparent={true} opacity={0.3} />
         <boxGeometry args={chassisBodyArgs} />
       </mesh> */}
-
+      
 <pointLight position={[-1.5, 0.5, 3]} />
       <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
       <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
       <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} />
       <WheelDebug wheelRef={wheels[3]} radius={wheelRadius} />
+
     </group>
   );
 }

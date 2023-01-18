@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Quiz.css";
-import cam from "./cam.png";
-import notch from "./notch.PNG";
+import cam from "./assets/cam.png";
+import notch from "./assets/notch.PNG";
 
 
 
@@ -98,10 +98,10 @@ const Modal = ({ isOpen, closeModal }) => {
         return (
           <div className="App">
             {/* 1. Header  */}
-            <h5 id="title">Invincible driver</h5>
+            <h5 id="title">Drive of fortune</h5>
       
             {/* 2. Current Score  */}
-            <h6 id="score">prize: {(score*500)}</h6>
+            <h5 id="score">prize: {(score*100)}</h5>
       
             {/* 3. Show results or show the question game  */}
             {showResults ? (

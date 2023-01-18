@@ -10,6 +10,7 @@ body, html, #root {
   
   font-family: 'Righteous', cursive;
   
+  
 }
 
 @media screen and (max-width: 480px) {
@@ -64,6 +65,44 @@ body, html, #root {
    display: none;
   
   }
+
+  .landing {
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #813333;
+    color: #fff;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    padding: 0 20px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: url('assets/bg-op.jpg') no-repeat center center fixed; 
+  
+  }
+
+  .ins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #813333;
+    color: #fff;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    padding: 0 20px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: url('assets/ins.jpg') no-repeat center center fixed;
+  }
 }
 
 
@@ -79,6 +118,7 @@ body, html, #root {
   opacity: 0.9;
   color: white;
   padding: 5px;
+  display: none;
   
 }
 
@@ -90,6 +130,7 @@ body, html, #root {
   opacity: 1;
   color: white;
   padding: 5px;
+  display: none;
 }
 
 p {
@@ -249,6 +290,73 @@ p {
     height: 10%;
   }
 
+  .landing {
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #813333;
+    color: #fff;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+    background: url('assets/bg-op.jpg') ; 
+    background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover; 
+  
+  }
+
+  .ins {
+    
+ 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+      
+      overflow: hidden;
+      background: url('assets/ins.jpg') ; 
+      background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+      
+    
+    
+  }
+
+  .ins img {
+    width: 40em;
+    height: 20em;
+   
+  }
+
+ 
+
+  .start{
+  
+  position: relative;
+  
+  top:78%;
+
+    
+  
+}
+
+ .start img{
+  width: 150px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+ }
+
 
 }
 
@@ -303,34 +411,14 @@ button {
 
 }
 
-.landing {
- 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #050505;
-  color: #fff;
-  font-family: 'Fredoka One', cursive;
-  font-size: 20px;
-  letter-spacing: 0.1px;
-  text-align: center;
-  padding: 0 20px;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
 
-}
 
 button {
   background: rgb(173, 25, 25);
   padding: 5px;
   border-radius: 15px;
   border: 1px solid #333;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  
   font-family: 'Fredoka One', cursive;
   font-size: 12px;
   letter-spacing: 0.75px;
@@ -341,22 +429,53 @@ button {
 
 .start{
   
-    background: rgb(173, 25, 25);
-    padding: 5px;
-    border-radius: 15px;
-    border: 1px solid #333;
-    margin-right: 15px;
-    margin-left: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-family: 'Fredoka One', cursive;
-    font-size: 20px;
-    letter-spacing: 0.75px;
-    text-align: center;
-    color: #fff;
+    background: none;
+    position: absolute;
+    bottom: 20%;
+    left: 42%;
+    
     cursor: pointer;
+    border: none;
+    
   
 }
+
+.steering {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background: none;
+  opacity: 0.8;
+  color: white;
+  padding: 5px;
+  width: 45%;
+  height: 48%;
+
+  
+}
+
+
+.prize-enter, .message-enter {
+  opacity: 0;
+  transform: translateY(-50%);
+}
+
+.prize-enter-active, .message-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+.prize-exit, .message-exit {
+  opacity: 1;
+}
+
+.prize-exit-active, .message-exit-active {
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
 
 
 

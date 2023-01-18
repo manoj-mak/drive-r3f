@@ -18,22 +18,14 @@ function Phone() {
     useEffect (() => {
         setTimeout(() => {
             setIsOpen(true);
-        }, 6000);
+        }, 4000);
     }, []);
 
     
 
     return (
         <div className='toggle'>
-            <button onClick={
-                () => {
-                    if(isOpen) {
-                        closeModal();
-                    } else {
-                        openModal();
-                    }
-                }
-            }>phone</button>
+          
             <Modal isOpen={isOpen} closeModal={closeModal} />
         </div>
     )
