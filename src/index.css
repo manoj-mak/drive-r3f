@@ -292,17 +292,8 @@ p {
 
   .landing {
  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #813333;
-    color: #fff;
-    font-family: 'Fredoka One', cursive;
-    font-size: 20px;
-    letter-spacing: 0.1px;
-    text-align: center;
-    padding: 0 20px;
+   
+    padding: 0 0px;
     overflow: hidden;
     background: url('assets/bg-op.jpg') ; 
     background-size: cover;
@@ -315,36 +306,45 @@ p {
   .ins {
     
  
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      
-      
-      overflow: hidden;
-      background: url('assets/ins.jpg') ; 
-      background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-      
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
     
-  }
+    overflow: hidden;
+    background: url('assets/ins.jpg') ; 
+    background-size: cover;
+-webkit-background-size: cover;
+-o-background-size: cover;
+-moz-background-size: cover;
+    
+  
+  
+}
 
-  .ins img {
-    width: 40em;
-    height: 20em;
-   
-  }
+.ins img {
+  width: 40em;
+  height: 20em;
+ 
+}
 
  
 
   .start{
   
-  position: relative;
-  
-  top:78%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    position: absolute;
+    bottom: 0;
+    border: #9e4343;
+    border-width: 1px;
+    z-index: 20;
+    height: 10px;
+    
 
     
   
@@ -392,7 +392,7 @@ c-img {
 
 button {
   background: rgb(173, 25, 25);
-  padding: 5px;
+  padding: 0px;
   border-radius: 15px;
   border: 1px solid #333;
   margin-right: 5px;

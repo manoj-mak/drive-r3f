@@ -78,7 +78,7 @@ const Modal = ({ isOpen, closeModal }) => {
         const optionClicked = (isCorrect) => {
           // Increment the score
           if (isCorrect) {
-            setScore(score + 1);
+            setScore(score + 10);
           }
       
           if (currentQuestion + 1 < questions.length) {
