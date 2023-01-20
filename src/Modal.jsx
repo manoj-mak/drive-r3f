@@ -153,6 +153,7 @@ const Modal = ({ isOpen, closeModal }) => {
                   ) : (<div>
                   {/* Current Question  */}
                   <div className="q-layout">
+                  <img src="./q-mark.png" class="chat-img" alt="chat-img"></img>
                   <h5 className="question-text">{questions[currentQuestion].text}</h5>
                   </div>
         
@@ -185,11 +186,11 @@ const Modal = ({ isOpen, closeModal }) => {
                   
                   
                 </div>)
-                : (<div className="question-card">
+                : (<div className="landing-card">
                    
                 <img className="m-title"  src="./m-title.png" alt="fortune"/>
                 {/* make a counter for 5 secs  */}
-                <h5 className="question-text">Your first question coming in</h5>
+                <h5 className="result-text" style={{color:'white',}}>Your first question coming in</h5>
                 <h4 className="time">{time}</h4>
 
               </div>)}

@@ -46,8 +46,8 @@ export function Car({ thirdPerson,firstPerson }) {
   );
 
   //start moving the car
-  //vehicleApi.applyEngineForce(5, 2);
-  //vehicleApi.applyEngineForce(5, 3);
+  //vehicleApi.applyEngineForce(2, 2);
+  //vehicleApi.applyEngineForce(2, 3);
 
 
   useControls(vehicleApi, chassisApi);
