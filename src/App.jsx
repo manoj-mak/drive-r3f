@@ -224,7 +224,7 @@ function App() {
     if(Crashed==true){
       setTimeout(() => {
         setShake(true);
-      }, 1000);
+      }, 800);
     }
   }, [Crashed,]);
 
