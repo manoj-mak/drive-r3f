@@ -1,11 +1,11 @@
 import React from 'react';
 import './FullPageImage.css'
-import Message from './assets/prize.png';
+import Message from './assets/bg-op.jpg';
 
 const FullPageImage = ({ }) => {
   return (
     <div className="FullPageImage" style={{backgroundImage: `url(${Message})`}}>
-      {/*<img src={Message} alt="Full Page message" className="center-img"  />*/}
+      <img className="fortune" src="./fortune.png" alt="fortune"/>
     </div>
   );
 }

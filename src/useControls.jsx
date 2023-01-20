@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import DriveSound from "./assets/sounds/drive.mp3";
 
 export const useControls = (vehicleApi, chassisApi) => {
   let [controls, setControls] = useState({ });
   let [direction, setDirection] = useState('');
+  const [sound] = useState(() => new Audio(DriveSound));
+  const [Moving, setMoving] = useState(false);
   const reset = document.getElementById('reset');
+  
   var n=0;
   reset.addEventListener('click', function() {
       chassisApi.position.set(-1.5, 0.5, 3);
@@ -13,6 +17,9 @@ export const useControls = (vehicleApi, chassisApi) => {
   });
 
   useEffect(() => {
+
+    
+
     
     const keyDownPressHandler = (e) => {
       setControls((controls) => ({ ...controls, [e.key.toLowerCase()]: true }));
@@ -57,8 +64,9 @@ export const useControls = (vehicleApi, chassisApi) => {
       
       //move car up
       
-      vehicleApi.applyEngineForce(10, 2);
-      vehicleApi.applyEngineForce(10, 3);
+      vehicleApi.applyEngineForce(6, 2);
+      vehicleApi.applyEngineForce(6, 3);
+      setMoving(true);
 
       if(n>0){
       vehicleApi.setSteeringValue(-0.001, 2);
@@ -95,6 +103,8 @@ export const useControls = (vehicleApi, chassisApi) => {
     
     }
 
+    
+
 
     
 
@@ -119,6 +129,7 @@ export const useControls = (vehicleApi, chassisApi) => {
               chassisApi.velocity.set(0, 0, 0);
               clearInterval(inter);
               inter=undefined;
+              setMoving(false);
               
     
             }, 1500);
@@ -169,6 +180,16 @@ export const useControls = (vehicleApi, chassisApi) => {
       
     }
   }, []);
+
+  useEffect(() => {
+    //if moving is true then play the sound
+    if(Moving){
+      console.log('moving');
+      sound.play();
+    }else{
+      sound.pause();
+    }
+  }, [Moving]);
 
   
 

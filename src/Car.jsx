@@ -46,8 +46,8 @@ export function Car({ thirdPerson,firstPerson }) {
   );
 
   //start moving the car
-  //vehicleApi.applyEngineForce(10, 2);
-  //vehicleApi.applyEngineForce(10, 3);
+  //vehicleApi.applyEngineForce(5, 2);
+  //vehicleApi.applyEngineForce(5, 3);
 
 
   useControls(vehicleApi, chassisApi);
@@ -88,7 +88,7 @@ export function Car({ thirdPerson,firstPerson }) {
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
     
-    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(0.12));
+    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(0.11));
     state.camera.position.copy(cameraPosition);
     state.camera.quaternion.copy(quaternion);
 

@@ -10,11 +10,16 @@ import { Physics } from "@react-three/cannon";
 import  Phone  from "./Phone";
 import Lottie from "lottie-react";
 import LoadingCar from "./assets/loading.json";
+import Timer from "./Timer";
+import PrizePot from "./PrizePot";
 import Rotate from "./assets/rotate.json"
-import Crash from "./assets/crashed.json"
 import FullPageImage from "./FullPageImage";
+import FullPageLottie from "./FullPageLottie";
 import EndMessage from "./EndMessage" 
+import Explode from "./assets/explode.json"
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import GlassCrack from "./GlassCrack";
+
 
 
 
@@ -51,6 +56,8 @@ function App() {
     const [Shake, setShake] = useState(false);
     const [Prize, setPrize] = useState(false);
     const [Message, setMessage] = useState(false);
+    
+    
     let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -66,6 +73,12 @@ function App() {
   function closeModal() {
     setIsOpen(false);
   }
+
+  
+  
+
+   
+
 
     
 
@@ -92,6 +105,7 @@ function App() {
             <div className="rotate">
                    <Lottie loop={true} animationData={Rotate} />
               </div>
+            <img className="title" src="./title.png" alt="title"/>
             <button className="start" onClick={() =>{
               //setStarted(false);
               setInstruct(true);
@@ -105,9 +119,18 @@ function App() {
         return (
           <div className="ins">
             
-            <div>
-            <img src="./ins.png" alt="start"/>
-            </div>
+            
+            <img className="instruct" src="./ins.png" alt="start"/>
+            <button className="start" onClick={() =>{
+              
+              setStarted(false);
+              setLoading(true);
+              localStorage.setItem('score', 0);
+              
+            } }>
+              <img style={{borderRadius:'45px'}} src="./bg-button2.jpg" alt="start"/>
+            </button>
+          
             
             
            
@@ -117,14 +140,10 @@ function App() {
       
     };
 
-    useEffect(() => {
-      if(instruct==true){
-        setTimeout(() => {
-          setStarted(false);
-          setLoading(true);
-        }, 5000);
-      }
-    }, [instruct]);
+   
+
+
+    
 
     
 
@@ -144,6 +163,7 @@ function App() {
         clearInterval(interval);
         setCrashed(true);
         openModal();
+        
 
       }
       else{
@@ -223,9 +243,15 @@ function App() {
         setMessage(true);
         setPrize(false);
         localStorage.removeItem('question');
-      }, 5000);
+      }, 6000);
     }
   }, [Prize]);
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', () => {
+      localStorage.clear();
+    });
+  }, []);
 
   
 
@@ -272,14 +298,28 @@ function App() {
        
        
         
-    
+        {Crashed ? null : (<Timer />)}
+        {Crashed ? null : ( <PrizePot  />)}
         {Crashed ? null : (<Phone />)}
+        {Shake ? (<GlassCrack/>) : (null)}
+
+        <TransitionGroup>
+       {Shake ? (
+       <CSSTransition
+        key="lottie"
+        timeout={500}
+        classNames="lottie"
+        >
+        <FullPageLottie />
+        </CSSTransition>
+        ) : null}
+      </TransitionGroup>
         
         <TransitionGroup>
        {Prize ? (
        <CSSTransition
         key="prize"
-        timeout={300}
+        timeout={500}
         classNames="prize"
         >
         <FullPageImage />
@@ -292,7 +332,7 @@ function App() {
        {Message ? (
        <CSSTransition
         key="message"
-        timeout={300}
+        timeout={500}
         classNames="message"
         >
         <EndMessage />

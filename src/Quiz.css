@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
 
 
 .App {
@@ -7,25 +8,43 @@
   justify-content: center;
   flex-direction: column;
   font-family: 'Nunito', sans-serif;
+  
   }
 
   
   .question-card {
     /* Center the div  */
     margin: 0 auto;
+    
+    /* center vertically */
+    margin-top: 54px;
+    
+    
+
   
     /* Dimensions  */
     width: 75%; /* Can be in percentage also. */
     height: 40%;
   
     /* Visual  */
-    background-color: rgb(230, 175, 171);
+    background-color: rgb(37, 34, 34);
     padding: 16px;
     border-radius: 16px;
-    color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    color: rgb(26, 24, 24);
+    background: none;
+   
   }
+
+  .q-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+   
+  }
+
+  
   
   ul {
     list-style: none;
@@ -36,18 +55,25 @@
   
   li {
     margin-top: 4px;
-    background-color: rgb(214, 73, 73);
+    background-color: rgba(223, 141, 109, 0.849);
     padding: 10px;
-    border: 3px solid white;
+    border: 2px solid rgb(189, 54, 20);
     border-radius: 20px;
     font-size: 10px;
+    font-weight: bold;
     
   }
-  
   .question-text {
-    color: rgb(20, 20, 20);
+    color: rgb(15, 14, 14);
     font-size: 14px;
     margin: 3px;
+  }
+  
+  .result-text {
+    color: rgb(219, 88, 37);
+    font-size: 14px;
+    margin: 3px;
+    font-family:'Anton', sans-serif;
   }
   
   /* Final Results  */
@@ -70,6 +96,13 @@
       rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   }
 
+  .time{
+    color: rgb(23, 23, 24);
+    font-size: 60px;
+    font-family: 'Londrina Outline', cursive;
+    
+  }
+
 #score{
     margin: 0 0 5px 0;
     color: rgb(216, 19, 19);
@@ -84,6 +117,14 @@
     margin: 5px;
 }
 
+.m-title{
+  /* logo image  */
+  width: 150px;
+  height: 100px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
 @media only screen and (max-height: 500px) {
     .App {
         text-align: center;
@@ -91,23 +132,43 @@
       justify-content: center;
       flex-direction: column;
       }
+
+      .time{
+        color: rgb(23, 23, 24);
+        font-size: 22px;
+        font-family: 'Londrina Outline', cursive;
+      }
     
       
       .question-card {
         /* Center the div  */
         margin: 0 auto;
+        
+        /* center vertically */
+        margin-top: 24px;
+        
+        
+    
       
         /* Dimensions  */
         width: 75%; /* Can be in percentage also. */
         height: 40%;
       
         /* Visual  */
-        background-color: rgb(230, 175, 171);
-        padding: 10px;
+        background-color: rgb(37, 34, 34);
+        padding: 16px;
         border-radius: 16px;
-        color: white;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+        color: rgb(26, 24, 24);
+        background: none;
+       
+      }
+
+      .m-title{
+        /* logo image  */
+        width: 90px;
+        height: 50px;
+        margin: 0 auto;
+        margin-bottom: 10px;
       }
       
       ul {
@@ -121,18 +182,25 @@
       
       li {
         margin-top: 4px;
-        background-color: rgb(214, 73, 73);
+        background-color: rgba(223, 141, 109, 0.849);
         padding: 5px;
-        border: 2px solid white;
+        border: 2px solid rgb(189, 54, 20);
         border-radius: 20px;
         font-size: 8px;
         
       }
       
       .question-text {
-        color: rgb(20, 20, 20);
+        color: rgb(15, 14, 14);
         font-size: 8px;
         margin: 2px;
+      }
+
+      .result-text {
+        color: rgb(219, 88, 37);
+        font-size: 8px;
+        margin: 2px;
+        font-family:'Anton', sans-serif;
       }
       
       /* Final Results  */
