@@ -6,7 +6,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
-import { CameraShake } from "@react-three/drei";
+
 
 
 export function Car({ thirdPerson,firstPerson }) {
@@ -14,7 +14,7 @@ export function Car({ thirdPerson,firstPerson }) {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
     GLTFLoader,
-    process.env.PUBLIC_URL + "/models/car3.glb"
+    process.env.PUBLIC_URL + "/models/car-cut.glb"
   ).scene;
 
   const position = [-1.5, 0.5, 3];
