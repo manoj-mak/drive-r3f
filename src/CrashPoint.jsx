@@ -1,6 +1,6 @@
 import { useBox } from "@react-three/cannon";
 
-const debug = false;
+const debug = true;
 
 export function CrashPoint({ position, scale }) {
   useBox(() => ({
@@ -18,7 +18,7 @@ export function CrashPoint({ position, scale }) {
     debug && (
       <mesh position={position}>
         <boxGeometry args={scale} />
-        <meshBasicMaterial transparent={true} opacity={0.95} />
+        <meshBasicMaterial transparent={true} opacity={0.015} />
       </mesh>
     )
   );

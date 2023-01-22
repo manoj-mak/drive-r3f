@@ -35,7 +35,7 @@ const Modal = ({ isOpen, closeModal }) => {
         const [tag, setTag] = useState('');
 
         //make a timer
-        const [time, setTime] = useState(5);
+        const [time, setTime] = useState(10);
 
         setTimeout(() => {
           setTime(time - 1);

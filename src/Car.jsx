@@ -1,6 +1,6 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef,useState } from "react";
 import { Quaternion, Vector3 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useControls } from "./useControls";
@@ -14,8 +14,23 @@ export function Car({ thirdPerson,firstPerson }) {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
     GLTFLoader,
-    process.env.PUBLIC_URL + "/models/car-cut.glb"
+    process.env.PUBLIC_URL + "/models/car-wo-steering.glb"
   ).scene;
+
+  //add steering wheel
+  let steeringWheel = useLoader(
+    GLTFLoader,
+    process.env.PUBLIC_URL + "/models/steering1.glb"
+  ).scene;
+
+  const steeringWheelRef = useRef();
+  const [steeringAngle, setSteeringAngle] = useState(0);
+  const [xRotation, setXRotation] = useState(0);
+  const [yRotation, setYRotation] = useState(0);
+  const [zRotation, setZRotation] = useState(0);
+  const [Left, setLeft] = useState(false);
+
+
 
   const position = [-1.5, 0.5, 3];
   const width = 0.15;
@@ -46,11 +61,44 @@ export function Car({ thirdPerson,firstPerson }) {
   );
 
   //start moving the car
-  //vehicleApi.applyEngineForce(2, 2);
-  //vehicleApi.applyEngineForce(2, 3);
+  setInterval(() => {
+  //vehicleApi.applyEngineForce(5, 2);
+  //vehicleApi.applyEngineForce(5, 3);
+  }, 2000);
 
 
-  useControls(vehicleApi, chassisApi);
+  useControls(vehicleApi, chassisApi, setSteeringAngle);
+
+  document.getElementById("steer-left").onmouseenter = function() {Enter1()};
+  document.getElementById("steer-left").onmouseleave = function() {Leave1()};
+  document.getElementById("steer-right").onmouseenter = function() {Enter()};
+  document.getElementById("steer-right").onmouseleave = function() {Leave()};
+
+  var n = 0;
+
+  function Enter() {
+
+   setLeft(true);
+   vehicleApi.setSteeringValue(-0.004, 2);
+   vehicleApi.setSteeringValue(-0.004, 3);
+      vehicleApi.setSteeringValue(0.002, 0);
+      vehicleApi.setSteeringValue(0.002, 1);
+    
+    
+  }
+  function Leave() {
+    setLeft(false);
+    vehicleApi.setSteeringValue(0.004, 2);
+        vehicleApi.setSteeringValue(0.004, 3);
+        vehicleApi.setSteeringValue(-0.002, 0);
+        vehicleApi.setSteeringValue(-0.002, 1);
+  }
+  function Enter1() {}
+  function Leave1() {}
+
+  
+
+  
 
   useFrame((state) => {
     if(!thirdPerson) return;
@@ -72,6 +120,8 @@ export function Car({ thirdPerson,firstPerson }) {
     state.camera.lookAt(position);
   });
 
+  
+
   useFrame((state) => {
     if(!firstPerson) return;
     
@@ -87,6 +137,9 @@ export function Car({ thirdPerson,firstPerson }) {
     let wDir = new Vector3(0.0017,0.0021,0.01);
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
+
+   
+    
     
     let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(0.11));
     state.camera.position.copy(cameraPosition);
@@ -99,6 +152,47 @@ export function Car({ thirdPerson,firstPerson }) {
     
   });
 
+ 
+
+
+  
+ var n = 0;
+ if(Left==true){
+  var righty = setTimeout(() => {
+    //setXRotation(xRotation + 0.01);
+      // setYRotation(yRotation + 0.01);
+    clearTimeout(lefty);
+    if(zRotation >= 0.01) {
+      setZRotation(zRotation - 0.02);
+      console.log('right')
+    }
+   
+    
+    
+  }, 10);
+
+} else if(Left==false) {
+  var lefty = setTimeout(() => {
+    //setXRotation(xRotation - 0.01);
+    //setYRotation(yRotation - 0.01);
+    clearTimeout(righty);
+    if(zRotation <= 0.01) {
+      setZRotation(zRotation + 0.02);
+      console.log('left')
+    }
+    
+  }, 10);
+  
+ } else {
+
+  clearTimeout(lefty);
+  clearTimeout(righty);
+  setZRotation(0);
+  console.log('straight')
+
+ }
+  
+  
   
 
 
@@ -106,7 +200,17 @@ export function Car({ thirdPerson,firstPerson }) {
 
 
 
+ 
 
+
+  useEffect(() => {
+    if (!steeringWheel) return;
+
+    let mesh = steeringWheel;
+    mesh.scale.set(0.0012, 0.0012, 0.0012);
+
+    mesh.children[0].position.set(-365, -5, -67);
+  }, [steeringAngle]);
 
 
 
@@ -123,6 +227,7 @@ export function Car({ thirdPerson,firstPerson }) {
     <group ref={vehicle} name="vehicle">
       <group ref={chassisBody} name="chassisBody">
         <primitive object={result} rotation-y={Math.PI} position={[-0.4, -0.1, 0]}/>
+        <primitive object={steeringWheel}  position={[0.056, -0.0065, -0.05]} scale={[0.0015, 0.0015, 0.0015]} rotation={[xRotation * Math.PI,yRotation * Math.PI,zRotation * Math.PI]} />
       </group>
       
       {/* <mesh ref={chassisBody}>

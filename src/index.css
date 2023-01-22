@@ -176,7 +176,7 @@ body, html, #root {
   opacity: 1;
   color: white;
   padding: 5px;
-  display: none;
+  
 }
 
 p {
@@ -551,19 +551,34 @@ button {
   
 }
 
-.steering {
+.steering-left {
   position: absolute;
   bottom: 0px;
-  right: 0px;
-  background: none;
+  right: 21%;
+  background-color: #85888C;
   opacity: 0.8;
   color: white;
   padding: 5px;
-  width: 45%;
+  width: 20%;
   height: 48%;
-
-  
+  float:left;
+  background: none;
 }
+
+.steering-right {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #85888C;
+  opacity: 0.8;
+  color: white;
+  padding: 5px;
+  width: 20%;
+  height: 48%;
+  float:left;
+  background: none;
+}
+
 
 
 .prize-enter, .message-enter, .lottie-enter {

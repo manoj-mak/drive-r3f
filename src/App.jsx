@@ -370,9 +370,8 @@ function App() {
         </button>
         </div>
 
-        <div id="steer" className="steering">
-        
-        </div>
+        <div id="steer-left" className="steering-left"></div>
+        <div id="steer-right" className="steering-right"></div>
          </>)
       
       

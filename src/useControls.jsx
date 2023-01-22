@@ -5,6 +5,7 @@ export const useControls = (vehicleApi, chassisApi) => {
   let [controls, setControls] = useState({ });
   let [direction, setDirection] = useState('');
   const [sound] = useState(() => new Audio(DriveSound));
+  const [Inbound, setInbound] = useState(false);
   const [Moving, setMoving] = useState(false);
   const reset = document.getElementById('reset');
   
@@ -55,27 +56,24 @@ export const useControls = (vehicleApi, chassisApi) => {
       }
     }
 
-    document.getElementById("steer").onmouseenter = function() {mouseEnter()};
-    document.getElementById("steer").onmouseleave = function() {mouseLeave()};
+    document.getElementById("steer-left").onmouseenter = function() {mouseEnter1()};
+    document.getElementById("steer-left").onmouseleave = function() {mouseLeave1()};
+    document.getElementById("steer-right").onmouseenter = function() {mouseEnter()};
+    document.getElementById("steer-right").onmouseleave = function() {mouseLeave()};
   
     function mouseEnter() {
       console.log('mouse enter');
+      setInbound(true);
       
       
-      //move car up
-      
-      vehicleApi.applyEngineForce(6, 2);
-      vehicleApi.applyEngineForce(6, 3);
-      setMoving(true);
-
-      if(n>0){
-      vehicleApi.setSteeringValue(-0.001, 2);
-      vehicleApi.setSteeringValue(-0.001, 3);
+     
+      vehicleApi.setSteeringValue(-0.002, 2);
+      vehicleApi.setSteeringValue(-0.002, 3);
       vehicleApi.setSteeringValue(0.001, 0);
       vehicleApi.setSteeringValue(0.001, 1);
-    }
+    
       
-      n = n + 1;
+      //n = n + 1;
       //console.log(n);
 
       
@@ -89,18 +87,31 @@ export const useControls = (vehicleApi, chassisApi) => {
 
     function mouseLeave() {
       console.log('mouse leave');
+      setInbound(false);
       //tilt car slightly only for a second
 
      
 
       setTimeout(() => {
-        vehicleApi.setSteeringValue(0.001, 2);
-        vehicleApi.setSteeringValue(0.001, 3);
+        vehicleApi.setSteeringValue(0.002, 2);
+        vehicleApi.setSteeringValue(0.002, 3);
         vehicleApi.setSteeringValue(-0.001, 0);
         vehicleApi.setSteeringValue(-0.001, 1);
-      }, 500);
+      }, 100);
 
     
+    }
+
+    function mouseEnter1() {
+      setInbound(true);
+      vehicleApi.setSteeringValue(0.002, 2);
+      vehicleApi.setSteeringValue(0.002, 3);
+      vehicleApi.setSteeringValue(-0.001, 0);
+      vehicleApi.setSteeringValue(-0.001, 1);
+    }
+
+    function mouseLeave1() {
+      setInbound(false);
     }
 
     
@@ -185,7 +196,7 @@ export const useControls = (vehicleApi, chassisApi) => {
     //if moving is true then play the sound
     if(Moving){
       console.log('moving');
-      sound.play();
+      //sound.play();
     }else{
       sound.pause();
     }
