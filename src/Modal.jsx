@@ -32,18 +32,23 @@ const Modal = ({ isOpen, closeModal }) => {
         const [score, setScore] = useState(1000);
         const [Started, setStarted] = useState(false);
         const [correct, setCorrect] = useState(false);
-        const [tag, setTag] = useState('');
+        const [tag, setTag] = useState('first');
 
         //make a timer
         const [time, setTime] = useState(10);
 
         setTimeout(() => {
-          setTime(time - 1);
-          if(time == 0){
+          
+          if (time > 0) {
+            setTime(time - 1);
+          } else { 
+            setTime(0);
             setStarted(true);
-            sound.currentTime = 0;
-            sound.play();
-          }
+            //sound.currentTime = 0;
+            //sound.play();
+           }
+        
+          
         }, 1000);
         
       
@@ -100,7 +105,10 @@ const Modal = ({ isOpen, closeModal }) => {
         /* A possible answer was clicked */
         const optionClicked = (isCorrect) => {
           // Increment the score
-         
+          
+          
+          setTag('next');
+          setTime(10);
           if (isCorrect) {
             setScore(score * 10);
             setShowResults(true);
@@ -123,9 +131,14 @@ const Modal = ({ isOpen, closeModal }) => {
 
         useEffect(() => {
           setTimeout(() => {
+            
             setShowResults(false);
+            setStarted(false);
+            
           }, 2000);
         }, [showResults]);
+
+       
 
 
       
@@ -190,7 +203,7 @@ const Modal = ({ isOpen, closeModal }) => {
                    
                 <img className="m-title"  src="./m-title.png" alt="fortune"/>
                 {/* make a counter for 5 secs  */}
-                <h5 className="result-text" style={{color:'white',}}>Your first question coming in</h5>
+                <h5 className="result-text" style={{color:'white',}}>Your {tag} question coming in</h5>
                 <h4 className="time">{time}</h4>
 
               </div>)}

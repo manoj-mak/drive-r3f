@@ -19,6 +19,7 @@ import EndMessage from "./EndMessage"
 import Explode from "./assets/explode.json"
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import GlassCrack from "./GlassCrack";
+import FullPageBg from "./FullPageBg";
 
 
 
@@ -35,7 +36,7 @@ const customStyles = {
   },
 };
 
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+// bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#modal');
 
 
@@ -56,6 +57,7 @@ function App() {
     const [Shake, setShake] = useState(false);
     const [Prize, setPrize] = useState(false);
     const [Message, setMessage] = useState(false);
+    const [Fade, setFade] = useState(false);
     
     
     let subtitle;
@@ -109,6 +111,7 @@ function App() {
             <button className="start" onClick={() =>{
               //setStarted(false);
               setInstruct(true);
+              localStorage.clear();
               
             } }>
               <img style={{borderRadius:'45px'}} src="./bg-button1.jpg" alt="start"/>
@@ -171,7 +174,7 @@ function App() {
         localStorage.removeItem('question');
       }
     }
-    , 500);
+    , 300);
     return () => clearInterval(interval);
 
     
@@ -232,17 +235,28 @@ function App() {
   useEffect(() => {
     if(Shake==true){
       setTimeout(() => {
-        setPrize(true);
-      }, 3000);
+        //setPrize(true);
+        setFade(true);
+      }, 5000);
     }
   }, [Shake]);
+
+
+  useEffect(() => {
+    if(Fade==true){
+      setTimeout(() => {
+        setPrize(true);
+      }, 5000);
+    }
+  }, [Fade]);
 
   useEffect(() => {
     if(Prize==true){
       setTimeout(() => {
         setMessage(true);
         setPrize(false);
-        localStorage.removeItem('question');
+        setFade(false);
+        //localStorage.removeItem('question');
       }, 6000);
     }
   }, [Prize]);
@@ -311,6 +325,18 @@ function App() {
         classNames="lottie"
         >
         <FullPageLottie />
+        </CSSTransition>
+        ) : null}
+      </TransitionGroup>
+
+      <TransitionGroup>
+       {Fade ? (
+       <CSSTransition
+        key="fade"
+        timeout={2000}
+        classNames="fade"
+        >
+        <FullPageBg />
         </CSSTransition>
         ) : null}
       </TransitionGroup>

@@ -10,7 +10,7 @@ export function CrashPoint({ position, scale }) {
     onCollide: (e) => {
       //alert("crash point reached !");
         console.log("crashpoint reached", e);
-    
+        localStorage.setItem('question', 2);
     }
   }));
 

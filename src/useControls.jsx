@@ -143,7 +143,7 @@ export const useControls = (vehicleApi, chassisApi) => {
               setMoving(false);
               
     
-            }, 1500);
+            }, 500);
            
             
             

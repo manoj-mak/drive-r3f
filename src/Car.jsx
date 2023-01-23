@@ -98,12 +98,18 @@ export function Car({ thirdPerson,firstPerson }) {
   }
   function Leave() {
     setLeft(false);
-    vehicleApi.setSteeringValue(0.003, 2);
-        vehicleApi.setSteeringValue(0.003, 3);
-        vehicleApi.setSteeringValue(-0.002, 0);
-        vehicleApi.setSteeringValue(-0.002, 1);
+    vehicleApi.setSteeringValue(0.002, 2);
+        vehicleApi.setSteeringValue(0.002, 3);
+        vehicleApi.setSteeringValue(-0.001, 0);
+        vehicleApi.setSteeringValue(-0.001, 1);
   }
-  function Enter1() {}
+  function Enter1() {
+    setLeft(false);
+    vehicleApi.setSteeringValue(0.001, 2);
+    vehicleApi.setSteeringValue(0.001, 3);
+    vehicleApi.setSteeringValue(-0.0005, 0);
+    vehicleApi.setSteeringValue(-0.0005, 1);
+  }
   function Leave1() {}
 
   

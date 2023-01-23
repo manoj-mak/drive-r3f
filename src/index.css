@@ -178,7 +178,7 @@ body, html, #root {
   opacity: 1;
   color: white;
   padding: 5px;
-  
+  display: none;
   
 }
 
@@ -246,7 +246,7 @@ p {
 
 .modal.open {
   bottom: 10rem;
-  left: 15rem;
+  left: 20rem;
   opacity: 1;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
@@ -604,6 +604,39 @@ button {
   
   transition: opacity 600ms ease-out, transform 300ms ease-out;
 }
+
+
+
+
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 600ms ease-in, transform 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 600ms ease-out, transform 300ms ease-out;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
