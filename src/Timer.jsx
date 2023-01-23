@@ -19,7 +19,7 @@ function Timer() {
     const seconds = timeLeft % 60;
   
     return (
-      <div style={{ position: 'absolute', top: '10px', left: '10px',fontFamily:'Anton',fontSize:'2em',color:'white' }}>
+      <div style={{ position: 'absolute', top: '10px', left: '10px',fontFamily:'Anton',fontSize:'2em',color:'white', }}>
         {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </div>
     );

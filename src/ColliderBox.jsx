@@ -15,6 +15,7 @@ export function ColliderBox({ position, scale }) {
     type: "Static",
     onCollide: (e) => {
       console.log("collided with", e);
+      localStorage.setItem('question', 2);
 
 
       //get the sound to play only once

@@ -102,8 +102,8 @@ export function Scene() {
       <ColliderBox position={[-1.54,0,3.9]} scale={[0.65, 1, 0.4]}/>
       <CrashPoint position={[-1.54,0,-69]} scale={[0.65, 1, 0.5]}/>
      
-      <ColliderBox position={[-2.08, 0, -19.2]} scale={[0.1, 1, 21.8]}/>
-      <ColliderBox position={[-0.95, 0, -19.2]} scale={[0.1, 1, 21.8]}/>
+      <ColliderBox position={[-2.08, 0, -44.2]} scale={[0.1, 1, 55.8]}/>
+      <ColliderBox position={[-0.95, 0, -44.2]} scale={[0.1, 1, 55.8]}/>
      
       <Car thirdPerson={thirdPerson} firstPerson={firstPerson} />
       </>

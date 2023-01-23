@@ -14,7 +14,7 @@ export function Car({ thirdPerson,firstPerson }) {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
     GLTFLoader,
-    process.env.PUBLIC_URL + "/models/car-wo-steering.glb"
+    process.env.PUBLIC_URL + "/models/car-wo-steering-red.glb"
   ).scene;
 
   //add steering wheel
@@ -28,7 +28,7 @@ export function Car({ thirdPerson,firstPerson }) {
   const [xRotation, setXRotation] = useState(0);
   const [yRotation, setYRotation] = useState(0);
   const [zRotation, setZRotation] = useState(0);
-  const [Left, setLeft] = useState(false);
+  const [Left, setLeft] = useState(null);
 
 
 
@@ -62,9 +62,19 @@ export function Car({ thirdPerson,firstPerson }) {
 
   //start moving the car
   setInterval(() => {
-  //vehicleApi.applyEngineForce(5, 2);
-  //vehicleApi.applyEngineForce(5, 3);
-  }, 2000);
+    //get question number from local storage
+    var questionNumber = localStorage.getItem("question");
+    if(questionNumber < 2){
+      vehicleApi.applyEngineForce(5, 2);
+      vehicleApi.applyEngineForce(5, 3);
+    } else {
+      //stop the car
+      vehicleApi.applyEngineForce(0, 2);
+      vehicleApi.applyEngineForce(0, 3);
+      
+    }
+ 
+ }, 2000);
 
 
   useControls(vehicleApi, chassisApi, setSteeringAngle);
@@ -79,8 +89,8 @@ export function Car({ thirdPerson,firstPerson }) {
   function Enter() {
 
    setLeft(true);
-   vehicleApi.setSteeringValue(-0.004, 2);
-   vehicleApi.setSteeringValue(-0.004, 3);
+   vehicleApi.setSteeringValue(-0.003, 2);
+   vehicleApi.setSteeringValue(-0.003, 3);
       vehicleApi.setSteeringValue(0.002, 0);
       vehicleApi.setSteeringValue(0.002, 1);
     
@@ -88,8 +98,8 @@ export function Car({ thirdPerson,firstPerson }) {
   }
   function Leave() {
     setLeft(false);
-    vehicleApi.setSteeringValue(0.004, 2);
-        vehicleApi.setSteeringValue(0.004, 3);
+    vehicleApi.setSteeringValue(0.003, 2);
+        vehicleApi.setSteeringValue(0.003, 3);
         vehicleApi.setSteeringValue(-0.002, 0);
         vehicleApi.setSteeringValue(-0.002, 1);
   }
@@ -162,12 +172,14 @@ export function Car({ thirdPerson,firstPerson }) {
     //setXRotation(xRotation + 0.01);
       // setYRotation(yRotation + 0.01);
     clearTimeout(lefty);
-    if(zRotation >= 0.01) {
-      setZRotation(zRotation - 0.02);
-      console.log('right')
+    if(zRotation >= -0.09) {
+      setZRotation(zRotation - 0.01);
+      console.log('right', zRotation)
+
+      
     }
    
-    
+    console.log('right', zRotation)
     
   }, 10);
 
@@ -176,21 +188,14 @@ export function Car({ thirdPerson,firstPerson }) {
     //setXRotation(xRotation - 0.01);
     //setYRotation(yRotation - 0.01);
     clearTimeout(righty);
-    if(zRotation <= 0.01) {
-      setZRotation(zRotation + 0.02);
-      console.log('left')
+    if(zRotation <= 0.09) {
+      setZRotation(zRotation + 0.01);
+      console.log('left', zRotation)
     }
     
   }, 10);
   
- } else {
-
-  clearTimeout(lefty);
-  clearTimeout(righty);
-  setZRotation(0);
-  console.log('straight')
-
- }
+ } 
   
   
   
