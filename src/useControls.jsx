@@ -56,63 +56,7 @@ export const useControls = (vehicleApi, chassisApi) => {
       }
     }
 
-    document.getElementById("steer-left").onmouseenter = function() {mouseEnter1()};
-    document.getElementById("steer-left").onmouseleave = function() {mouseLeave1()};
-    document.getElementById("steer-right").onmouseenter = function() {mouseEnter()};
-    document.getElementById("steer-right").onmouseleave = function() {mouseLeave()};
-  
-    function mouseEnter() {
-      console.log('mouse enter');
-      setInbound(true);
-      
-      
-     
-      vehicleApi.setSteeringValue(-0.002, 2);
-      vehicleApi.setSteeringValue(-0.002, 3);
-      vehicleApi.setSteeringValue(0.001, 0);
-      vehicleApi.setSteeringValue(0.001, 1);
-    
-      
-      //n = n + 1;
-      //console.log(n);
-
-      
-      
-
-      
-      
-
-      
-    }
-
-    function mouseLeave() {
-      console.log('mouse leave');
-      setInbound(false);
-      //tilt car slightly only for a second
-
-     
-
-      setTimeout(() => {
-        vehicleApi.setSteeringValue(0.002, 2);
-        vehicleApi.setSteeringValue(0.002, 3);
-        vehicleApi.setSteeringValue(-0.001, 0);
-        vehicleApi.setSteeringValue(-0.001, 1);
-      }, 100);
-
-    
-    }
-
-    function mouseEnter1() {
-      setInbound(true);
-      vehicleApi.setSteeringValue(0.002, 2);
-      vehicleApi.setSteeringValue(0.002, 3);
-      vehicleApi.setSteeringValue(-0.001, 0);
-      vehicleApi.setSteeringValue(-0.001, 1);
-    }
-
-    function mouseLeave1() {
-      setInbound(false);
-    }
+   
 
     
 

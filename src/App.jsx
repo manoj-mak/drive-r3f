@@ -39,7 +39,29 @@ const customStyles = {
 // bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#modal');
 
+var clearAllTimeouts = (function () {
+  var noop = function () {},
+      firstId = window.setTimeout(noop, 0);
+  return function () {
+      var lastId = window.setTimeout(noop, 0);
+      console.log('Removing', lastId - firstId, 'timeout handlers');
+      while (firstId != lastId)
+          window.clearTimeout(++firstId);
+  };
+}());
 
+var clearAllIntervals = (function () {
+  var noop = function () {},
+      firstId = window.setInterval(noop, 0);
+  return function () {
+      var lastId = window.setInterval(noop, 0);
+      console.log('Removing', lastId - firstId, 'interval handlers');
+      while (firstId != lastId)
+          window.clearInterval(++firstId);
+  };
+}());
+    
+ 
 
 
 
@@ -174,7 +196,7 @@ function App() {
         localStorage.removeItem('question');
       }
     }
-    , 300);
+    , 800);
     return () => clearInterval(interval);
 
     
@@ -255,7 +277,7 @@ function App() {
       setTimeout(() => {
         setMessage(true);
         setPrize(false);
-        setFade(false);
+        //setFade(false);
         //localStorage.removeItem('question');
       }, 6000);
     }
@@ -264,6 +286,13 @@ function App() {
   useEffect(() => {
     window.addEventListener('beforeunload', () => {
       localStorage.clear();
+
+      //clear all timeouts and intervals
+      clearAllIntervals();
+      clearAllTimeouts();
+
+
+
     });
   }, []);
 

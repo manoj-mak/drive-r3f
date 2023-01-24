@@ -1,13 +1,13 @@
 import React from 'react';
 import './FullPageImage.css'
-import final from './assets/end-msg1.png';
+import Message from './assets/bg-op.jpg';
 
 const EndMessage = ({ }) => {
   return (
-    <div className="FullPageImage" style={{backgroundImage: `url(${final})`,}}>
-      {/*<img src={Message} alt="Full Page message" className="center-img"  />*/}
+    <div className="FullPageImage" style={{backgroundImage: `url(${Message})`}}>
+      <img className="fortune" src="./dont.png" alt="dont"/>
     </div>
   );
 }
 
-export default EndMessage; 
+export default EndMessage;

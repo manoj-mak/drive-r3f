@@ -45,7 +45,7 @@ const Modal = ({ isOpen, closeModal }) => {
             setTime(0);
             setStarted(true);
             //sound.currentTime = 0;
-            //sound.play();
+            sound.play();
            }
         
           
@@ -108,7 +108,7 @@ const Modal = ({ isOpen, closeModal }) => {
           
           
           setTag('next');
-          setTime(10);
+          setTime(12);
           if (isCorrect) {
             setScore(score * 10);
             setShowResults(true);
@@ -135,7 +135,7 @@ const Modal = ({ isOpen, closeModal }) => {
             setShowResults(false);
             setStarted(false);
             
-          }, 2000);
+          }, 3000);
         }, [showResults]);
 
        
@@ -156,9 +156,13 @@ const Modal = ({ isOpen, closeModal }) => {
               {Started ? (<div className="question-card">
                   
                  {showResults ? (
-                 <div>
+                 <div style={{display: "flex", alignItems: "center", justifyContent: "center",flexDirection:"column"}}>
                   {/* result */}
-                  <Lottie animationData={correct ? Right : Wrong} />
+                  
+                  <Lottie style={{width:'120%',height:'100%',}} animationData={correct ? Right : Wrong} />
+                  
+                  
+                  
                   <h5 className="result-text">{correct ? "Your answer is correct !" : "Sorry ! your answer is wrong"}</h5>
                   </div>
                   
@@ -166,7 +170,7 @@ const Modal = ({ isOpen, closeModal }) => {
                   ) : (<div>
                   {/* Current Question  */}
                   <div className="q-layout">
-                  <img src="./q-mark.png" class="chat-img" alt="chat-img"></img>
+                  
                   <h5 className="question-text">{questions[currentQuestion].text}</h5>
                   </div>
         

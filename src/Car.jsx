@@ -6,6 +6,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
+import DriveSound from "./assets/sounds/drive.mp3";
 
 
 
@@ -29,6 +30,8 @@ export function Car({ thirdPerson,firstPerson }) {
   const [yRotation, setYRotation] = useState(0);
   const [zRotation, setZRotation] = useState(0);
   const [Left, setLeft] = useState(null);
+  const [Move, setMove] = useState(false);
+  const [sound] = useState(() => new Audio(DriveSound));
 
 
 
@@ -65,16 +68,35 @@ export function Car({ thirdPerson,firstPerson }) {
     //get question number from local storage
     var questionNumber = localStorage.getItem("question");
     if(questionNumber < 2){
+      
       vehicleApi.applyEngineForce(5, 2);
       vehicleApi.applyEngineForce(5, 3);
     } else {
       //stop the car
+
       vehicleApi.applyEngineForce(0, 2);
       vehicleApi.applyEngineForce(0, 3);
+      //chassisApi.velocity.set(0, 0, 0);
+      //chassisApi.angularVelocity.set(0, 0, 0);
+      //chassisApi.rotation.set(0, 0, 0);
+
+      //stop the sound
+      sound.pause();
       
     }
  
  }, 2000);
+
+ useEffect(() => {
+  //play sound after 3 seconds
+  setTimeout(() => {
+    sound.play();
+  }
+  , 3000);
+
+  
+  
+ }, []);
 
 
   useControls(vehicleApi, chassisApi, setSteeringAngle);
