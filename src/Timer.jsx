@@ -9,6 +9,9 @@ function Timer() {
       const intervalId = setInterval(() => {
         if (timeLeft > 0) {
           setTimeLeft(timeLeft - 1);
+          if(timeLeft===18){
+            localStorage.setItem('question', 2);
+          }
         } else {
           console.log('Time is up');
           clearInterval(intervalId);

@@ -6,6 +6,8 @@ import Enable from "./assets/sounds/open.wav";
 import Lottie from "lottie-react";
 import Right from "./assets/correct.json";
 import Wrong from "./assets/wrong.json";
+import KaChing from "./assets/sounds/ka-ching.mp3";
+import Nope from "./assets/sounds/wrong.mp3";
 
 
 
@@ -21,6 +23,8 @@ const Modal = ({ isOpen, closeModal }) => {
     const minutes = date.getMinutes();
     const time = hours + ":" + minutes;
     const [sound] = useState(() => new Audio(Enable));
+    const [sound2] = useState(() => new Audio(KaChing));
+    const [sound3] = useState(() => new Audio(Nope));
     
 
   
@@ -37,19 +41,15 @@ const Modal = ({ isOpen, closeModal }) => {
         //make a timer
         const [time, setTime] = useState(10);
 
-        setTimeout(() => {
-          
+        useEffect(() => {
           if (time > 0) {
-            setTime(time - 1);
-          } else { 
+            setTimeout(() => setTime(time - 1), 1000);
+          } else {
             setTime(0);
             setStarted(true);
-            //sound.currentTime = 0;
             sound.play();
-           }
-        
-          
-        }, 1000);
+          }
+        }, [time]);
         
       
         const questions = [
@@ -112,12 +112,14 @@ const Modal = ({ isOpen, closeModal }) => {
           if (isCorrect) {
             setScore(score * 10);
             setShowResults(true);
+            sound2.play();
             setCorrect(true);
             //save the score in local storage
             localStorage.setItem("score", score);
             console.log(score, "score")
           } else{
             console.log("wrong")
+            sound3.play();
             setShowResults(true);
             setCorrect(false);
           }

@@ -120,8 +120,8 @@ export function Car({ thirdPerson,firstPerson }) {
   }
   function Leave() {
     setLeft(false);
-    vehicleApi.setSteeringValue(0.002, 2);
-        vehicleApi.setSteeringValue(0.002, 3);
+    vehicleApi.setSteeringValue(0.003, 2);
+        vehicleApi.setSteeringValue(0.003, 3);
         vehicleApi.setSteeringValue(-0.001, 0);
         vehicleApi.setSteeringValue(-0.001, 1);
   }

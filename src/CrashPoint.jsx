@@ -1,16 +1,34 @@
 import { useBox } from "@react-three/cannon";
+import CrashSound from "./assets/sounds/crash1.mp3";
+import { useState } from "react";
 
-const debug = true;
+const debug = false;
+var n = 0;
 
 export function CrashPoint({ position, scale }) {
+  const [sound] = useState(() => new Audio(CrashSound));
+  const [collided, setCollided] = useState(false);
   useBox(() => ({
     args: scale,
     position,
     type: "Static",
     onCollide: (e) => {
-      //alert("crash point reached !");
-        console.log("crashpoint reached", e);
-        localStorage.setItem('question', 2);
+      console.log("collided with", e);
+      localStorage.setItem('question', 2);
+
+
+      //get the sound to play only once
+     
+      if (n==0) {
+        sound.play();
+        setCollided(true);
+        n=n+1;
+      }
+
+
+      
+      
+    
     }
   }));
 
@@ -18,7 +36,7 @@ export function CrashPoint({ position, scale }) {
     debug && (
       <mesh position={position}>
         <boxGeometry args={scale} />
-        <meshBasicMaterial transparent={true} opacity={0.015} />
+        <meshBasicMaterial transparent={true} opacity={0.85} />
       </mesh>
     )
   );

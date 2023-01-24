@@ -148,6 +148,20 @@ body, html, #root {
     overflow: hidden;
     background: url('assets/ins.jpg') no-repeat center center fixed;
   }
+
+  .start{
+  
+    background: none;
+    position: absolute;
+    bottom: 15%;
+    left: 42%;
+    
+    cursor: pointer;
+    border: none;
+    z-index: 20;
+    
+  
+}
 }
 
 
@@ -179,6 +193,7 @@ body, html, #root {
   color: white;
   padding: 5px;
   display: none;
+  
   
 }
 
@@ -447,17 +462,14 @@ p {
 
   .start{
   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
+    background: none;
     position: absolute;
-    bottom: 0;
-    border: #9e4343;
-    border-width: 1px;
+    bottom: 15%;
+    left: 40%;
+    
+    cursor: pointer;
+    border: none;
     z-index: 20;
-    height: 10px;
     
 
     
@@ -504,15 +516,7 @@ c-img {
 }
 
 
-button {
-  background: rgb(173, 25, 25);
-  padding: 0px;
-  border-radius: 15px;
-  border: 1px solid #333;
-  margin-right: 5px;
-  margin-left: 5px;
 
-}
 
 .loading {
   position: absolute;
@@ -530,7 +534,7 @@ button {
 button {
   background: rgb(173, 25, 25);
   padding: 5px;
-  border-radius: 15px;
+  border-radius: 13px;
   border: 1px solid #333;
   
   font-family: 'Fredoka One', cursive;
@@ -542,19 +546,7 @@ button {
 
 }
 
-.start{
-  
-    background: none;
-    position: absolute;
-    bottom: 15%;
-    left: 40%;
-    
-    cursor: pointer;
-    border: none;
-    z-index: 20;
-    
-  
-}
+
 
 .steering-left {
   position: absolute;
@@ -617,7 +609,7 @@ button {
 
 .fade-enter-active {
   opacity: 1;
-  transition: opacity 600ms ease-in, transform 300ms ease-in;
+  transition: opacity 1000ms ease-in, transform 300ms ease-in;
 }
 
 .fade-exit {
@@ -626,7 +618,7 @@ button {
 
 .fade-exit-active {
   opacity: 0;
-  transition: opacity 600ms ease-out, transform 300ms ease-out;
+  transition: opacity 1000ms ease-out, transform 300ms ease-out;
 }
 
 

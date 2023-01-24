@@ -249,6 +249,7 @@ function App() {
     if(Crashed==true){
       setTimeout(() => {
         setShake(true);
+        clearTimeout();
       }, 800);
     }
   }, [Crashed,]);
@@ -259,7 +260,8 @@ function App() {
       setTimeout(() => {
         //setPrize(true);
         setFade(true);
-      }, 5000);
+        clearTimeout();
+      }, 8000);
     }
   }, [Shake]);
 
@@ -268,6 +270,7 @@ function App() {
     if(Fade==true){
       setTimeout(() => {
         setPrize(true);
+        clearTimeout();
       }, 5000);
     }
   }, [Fade]);
@@ -277,6 +280,7 @@ function App() {
       setTimeout(() => {
         setMessage(true);
         setPrize(false);
+        clearTimeout();
         //setFade(false);
         //localStorage.removeItem('question');
       }, 6000);

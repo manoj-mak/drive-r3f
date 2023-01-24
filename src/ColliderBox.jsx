@@ -1,6 +1,6 @@
 import { useBox, } from "@react-three/cannon";
 import { useState } from "react";
-import CrashSound from "./assets/sounds/crash.wav";
+import CrashSound from "./assets/sounds/crash1.mp3";
 
 
 const debug = false;
